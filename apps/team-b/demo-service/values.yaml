@@ -1,0 +1,16 @@
+# team-b values - bigger fleet, gold image tag
+replicaCount: 3
+
+image:
+  repository: nginx
+  tag: "1.27-alpine"
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    memory: 128Mi
+
+service:
+  port: 80
