@@ -1,0 +1,6 @@
+apiVersion: v2
+name: demo-service
+description: Shared chart for fleet demo apps - teams override via their values.yaml
+type: application
+version: 0.1.0
+appVersion: "1.27"
