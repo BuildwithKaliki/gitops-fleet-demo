@@ -1,0 +1,26 @@
+# The root of the fleet: app-of-apps.
+# Applying this single manifest makes ArgoCD spawn every application below.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/BuildwithKaliki/gitops-fleet-demo.git
+    targetRevision: main
+    path: apps
+    directory:
+      include: '*/application.yaml'
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
