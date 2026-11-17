@@ -1,0 +1,16 @@
+# team-a values. Bump image tag, merge PR, ArgoCD does the rest.
+replicaCount: 2
+
+image:
+  repository: nginx
+  tag: "1.27"
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    memory: 128Mi
+
+service:
+  port: 80
